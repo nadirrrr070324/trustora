@@ -78,13 +78,28 @@ Option B — manual Web Service:
 
 ## Errors fixed during this pass
 
-1. `npm run lint` would fail on hosts with no ESLint config → now
-   degrades to a logged skip instead of failing the build.
+1. `npm run lint` used a `|| echo` shell fallback that breaks on Windows
+   hosts and non-POSIX shells → replaced with cross-platform
+   `scripts/lint-guard.js`, which runs `next lint` only when an ESLint
+   config exists and exits 0 otherwise. Verified: exit 0 both paths.
 2. No Node version pin (hosts default to latest, can break Next 14) →
    pinned 20.18.0 via `.nvmrc`, `engines`, and Render `NODE_VERSION`.
 3. No deploy manifests → added `vercel.json` + `render.yaml` (Blueprint).
 4. Missing production security headers → added `X-Frame-Options: DENY`,
    `X-Content-Type-Options: nosniff`, strict `Referrer-Policy`,
-   restrictive `Permissions-Policy`.
+   restrictive `Permissions-Policy`. Verified live on `npm start`.
 5. `next.config.js` had no `output: standalone` → added so Render/Docker
    images stay small (Vercel ignores it).
+
+## Verified 2026-10-10 (local production proof)
+
+- `npx tsc --noEmit` → exit 0
+- `npm run test:trust` → 9/9 ok
+- `npm run build` → 44/44 pages, no errors
+- `npm start` + HTTP probe:
+  `/` 200 (85,909 bytes), `/discover` 200, `/rankings` 200,
+  `/providers/harbor-plumbing` 200, `/compare` 200,
+  `/methodology` 200, `/signin` 200
+- Security headers present: `X-Frame-Options: DENY`,
+  `X-Content-Type-Options: nosniff`, strict referrer, permissions-policy
+- Git: repo rooted at `trustora/`, branch `main`, tree clean
