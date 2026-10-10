@@ -4,7 +4,9 @@ const nextConfig = {
   // Standalone output keeps Render/Docker images small;
   // Vercel ignores it safely.
   output: "standalone",
-  images: { remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }] },
+  // Serve images directly from the CDN (Unsplash already returns sized,
+  // format-optimised files via its own URL params) — avoids a double hop.
+  images: { unoptimized: true, remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }] },
   async headers() {
     return [
       {

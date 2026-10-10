@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import logo from "@/public/logo.png";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { GitCompareArrows, Menu, Search, X } from "lucide-react";
@@ -40,9 +41,10 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2.5" aria-label="TRUSTORA home">
           <div className="relative h-8 w-8">
             <Image
-              src="/logo.png"
+              src={logo}
               alt="TRUSTORA Logo"
               fill
+              sizes="32px"
               className="object-contain"
               priority
             />

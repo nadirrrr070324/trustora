@@ -7,6 +7,7 @@ import { PROVIDERS, withOverrides } from "@/lib/data";
 import { computeTrustScore, rankProviders, starAverage } from "@/lib/trust-engine";
 import { useStore } from "@/lib/store";
 import { DemoNotice } from "@/components/CompareTray";
+import { AutoLocate } from "@/components/AutoLocate";
 import { ActiveChip, FilterPanel, type FilterState } from "./filters";
 import { EmptyResults, ResultsGrid } from "./results";
 
@@ -99,7 +100,12 @@ function DiscoverInner() {
       <div className="mt-4"><DemoNotice compact /></div>
       <div className="mt-5 grid gap-3 rounded-2xl border border-white/10 bg-ink-950/60 p-3 sm:grid-cols-[1fr_1fr_auto]">
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Service, business or keyword…" className="input" aria-label="Search services" />
-        <input value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="Location…" className="input" aria-label="Filter by location" />
+        <div className="relative">
+          <input value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="Location…" className="input pr-28" aria-label="Filter by location" />
+          <span className="absolute right-1.5 top-1/2 -translate-y-1/2">
+            <AutoLocate auto={loc === ""} onLocate={(p) => setLoc(p.city)} />
+          </span>
+        </div>
         <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} className="input sm:w-48" aria-label="Sort providers">
           {SORTS.map((s) => <option key={s.key} value={s.key}>{s.label}</option>)}
         </select>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "@/public/logo.png";
 
 const COLS: { title: string; links: { href: string; label: string }[] }[] = [
   {
@@ -49,9 +50,10 @@ export function Footer() {
             <div className="flex items-center gap-2.5">
               <div className="relative h-8 w-8">
                 <Image
-                  src="/logo.png"
+                  src={logo}
                   alt="TRUSTORA Logo"
                   fill
+                  sizes="32px"
                   className="object-contain"
                 />
               </div>

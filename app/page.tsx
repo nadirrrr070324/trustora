@@ -5,6 +5,7 @@ import { MapPin, Search, ShieldCheck, Star, TrendingUp } from "lucide-react";
 import { PROVIDERS } from "@/lib/data";
 import { rankProviders } from "@/lib/trust-engine";
 import { useStore } from "@/lib/store";
+import { AutoLocate } from "@/components/AutoLocate";
 import { HeroCategories, HomeSections } from "./home-sections";
 
 export default function HomePage() {
@@ -55,13 +56,16 @@ export default function HomePage() {
                 placeholder="What service? e.g. plumber, tutor, designer"
                 className="input border-transparent bg-transparent pl-10" />
             </label>
-            <label className="relative block border-t border-green-200 pt-3 sm:border-l sm:border-t-0 sm:pl-3 sm:pt-0">
+            <div className="relative border-t border-green-200 pt-3 sm:border-l sm:border-t-0 sm:pl-3 sm:pt-0">
               <MapPin size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 sm:left-6" />
-              <span className="sr-only">Location</span>
               <input value={location} onChange={(e) => setLocation(e.target.value)}
                 placeholder="Location e.g. Seattle, WA"
-                className="input border-transparent bg-transparent pl-10" />
-            </label>
+                aria-label="Location"
+                className="input border-transparent bg-transparent pl-10 pr-28" />
+              <span className="absolute right-1.5 top-1/2 -translate-y-1/2">
+                <AutoLocate auto={location === ""} onLocate={(p) => setLocation(p.city)} />
+              </span>
+            </div>
             <button type="submit" className="btn-primary min-h-11 px-7">Search</button>
           </form>
           <div className="relative mt-4 flex flex-wrap items-center gap-2">
