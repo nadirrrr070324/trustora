@@ -201,3 +201,207 @@ body {
   border-radius: 8px;
   border: 2px solid #f0fdf4;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DARK MODE  (class strategy — toggled on <html> by lib/theme.tsx)
+   A single override layer restyles every hardcoded light utility globally,
+   so no per-component edits are required.
+   ══════════════════════════════════════════════════════════════════════════ */
+.dark body {
+  background: linear-gradient(135deg, #0b0e13 0%, #0d1410 55%, #0a0f0b 100%);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(34, 197, 94, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(74, 222, 128, 0.08) 0%, transparent 50%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  color: #e2e8f0;
+}
+
+/* Text scale — the "dark text on light" utilities become light on dark. */
+.dark .text-slate-900 { color: #f8fafc; }
+.dark .text-slate-800 { color: #f1f5f9; }
+.dark .text-slate-700 { color: #e2e8f0; }
+.dark .text-slate-600 { color: #cbd5e1; }
+.dark .text-slate-500 { color: #94a3b8; }
+
+/* Accent green brightened for contrast against dark surfaces. */
+.dark .text-green-600 { color: #4ade80; }
+.dark .text-green-700 { color: #86efac; }
+
+/* Borders */
+.dark .border-green-200 { border-color: rgba(34, 197, 94, 0.22); }
+.dark .border-green-300 { border-color: rgba(34, 197, 94, 0.38); }
+
+/* Green-tinted surfaces */
+.dark .bg-green-50 { background-color: rgba(34, 197, 94, 0.1); }
+.dark .bg-green-100 { background-color: rgba(34, 197, 94, 0.16); }
+.dark .hover\:bg-green-50:hover { background-color: rgba(34, 197, 94, 0.12); }
+.dark .bg-slate-100 { background-color: #1e2531; }
+
+/* Opaque white surfaces used on the light pages → dark translucent panels.
+   Low-opacity overlays (bg-white/5, /10, /15) are intentionally left as-is. */
+.dark .bg-white\/90 { background-color: rgba(13, 17, 23, 0.9); }
+.dark .bg-white\/80 { background-color: rgba(16, 20, 27, 0.85); }
+.dark .bg-white\/70 { background-color: rgba(16, 20, 27, 0.72); }
+.dark .bg-white\/60 { background-color: rgba(16, 20, 27, 0.6); }
+
+/* Glass surfaces */
+.dark .glass,
+.dark .glass-soft,
+.dark .glass-card {
+  background-color: rgba(16, 20, 27, 0.72);
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-color: rgba(34, 197, 94, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.dark .solid-panel {
+  background: rgba(16, 20, 27, 0.9);
+  border-color: rgba(34, 197, 94, 0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Form controls */
+.dark .input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(34, 197, 94, 0.22);
+  color: #e2e8f0;
+}
+.dark .input::placeholder { color: #64748b; }
+
+/* Buttons & chips */
+.dark .btn-ghost {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(34, 197, 94, 0.22);
+  color: #cbd5e1;
+}
+.dark .btn-ghost:hover { background-color: rgba(34, 197, 94, 0.12); }
+.dark .chip {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: #cbd5e1;
+}
+.dark .label { color: #94a3b8; }
+.dark .link-muted { color: #94a3b8; }
+.dark .link-muted:hover { color: #4ade80; }
+
+/* Scrollbar */
+.dark ::-webkit-scrollbar-track { background: #0b0e13; }
+.dark ::-webkit-scrollbar-thumb { background: #1e2531; border-color: #0b0e13; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY MODES  (classes on <html> set by lib/theme.tsx)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Adjustable text size — scales the root font so rem-based UI grows. */
+html { font-size: 100%; }
+html[data-text-size="large"] { font-size: 112.5%; }  /* 18px base */
+html[data-text-size="xlarge"] { font-size: 125%; }   /* 20px base */
+
+/* 2. Reduce motion — neutralise transitions, transforms and smooth scroll. */
+.a11y-reduce-motion,
+.a11y-reduce-motion *,
+.a11y-reduce-motion *::before,
+.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+.a11y-reduce-motion .glass:hover,
+.a11y-reduce-motion .glass-soft:hover,
+.a11y-reduce-motion .glass-card:hover {
+  transform: none !important;
+}
+
+/* 3. Dyslexia-friendly font — readable typeface + wider tracking. */
+.a11y-dyslexic body,
+.a11y-dyslexic .h-display,
+.a11y-dyslexic h1,
+.a11y-dyslexic h2,
+.a11y-dyslexic h3,
+.a11y-dyslexic p,
+.a11y-dyslexic input,
+.a11y-dyslexic button,
+.a11y-dyslexic span,
+.a11y-dyslexic a {
+  font-family: "Comic Sans MS", "Comic Neue", "Verdana", "Trebuchet MS", ui-sans-serif, sans-serif !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.12em !important;
+  line-height: 1.7 !important;
+}
+
+/* 4. High contrast — solid surfaces, stronger borders, heavier focus rings,
+      and max-contrast text that works in both light and dark schemes. */
+.a11y-contrast body {
+  background-image: none !important;
+}
+.a11y-contrast .glass,
+.a11y-contrast .glass-soft,
+.a11y-contrast .glass-card,
+.a11y-contrast .solid-panel {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-width: 2px !important;
+  border-color: #15803d !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.a11y-contrast .input {
+  background-color: #ffffff !important;
+  border: 2px solid #15803d !important;
+  color: #0f172a !important;
+}
+.a11y-contrast .input::placeholder { color: #475569 !important; }
+.a11y-contrast .chip,
+.a11y-contrast .btn-ghost {
+  background-color: #ffffff !important;
+  border: 2px solid #15803d !important;
+  color: #0f172a !important;
+}
+.a11y-contrast .text-slate-500,
+.a11y-contrast .text-slate-400,
+.a11y-contrast .link-muted { color: #334155 !important; }
+.a11y-contrast *:focus-visible {
+  outline: 3px solid #15803d !important;
+  outline-offset: 2px !important;
+}
+/* High contrast + dark scheme */
+.a11y-contrast.dark body { background-color: #000000 !important; color: #ffffff !important; }
+.a11y-contrast.dark .glass,
+.a11y-contrast.dark .glass-soft,
+.a11y-contrast.dark .glass-card,
+.a11y-contrast.dark .solid-panel {
+  background-color: #000000 !important;
+  border-color: #4ade80 !important;
+}
+.a11y-contrast.dark .input {
+  background-color: #000000 !important;
+  border-color: #4ade80 !important;
+  color: #ffffff !important;
+}
+.a11y-contrast.dark .chip,
+.a11y-contrast.dark .btn-ghost {
+  background-color: #000000 !important;
+  border-color: #4ade80 !important;
+  color: #ffffff !important;
+}
+.a11y-contrast.dark .text-slate-500,
+.a11y-contrast.dark .text-slate-400,
+.a11y-contrast.dark .link-muted,
+.a11y-contrast.dark .text-slate-600,
+.a11y-contrast.dark .text-slate-700 { color: #e2e8f0 !important; }
+.a11y-contrast.dark *:focus-visible {
+  outline: 3px solid #4ade80 !important;
+}
+
