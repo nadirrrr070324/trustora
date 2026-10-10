@@ -1,0 +1,51 @@
+import type { Provider } from "./types";
+import { U, r } from "./data-helpers";
+
+export const P_BRIGHTPATH: Provider = {
+  id: "brightpath-tutoring",
+  name: "Brightpath Tutoring",
+  category: "education-tutoring",
+  location: "Chicago, IL",
+  areas: ["Chicago", "Evanston", "Online"],
+  image: U("photo-1522202176988-66273c2fd55f"),
+  initials: "BP",
+  verification: "verified",
+  licenseNote: "Tutor background checks demo-verified (synthetic record)",
+  priceMin: 45, priceMax: 90, quoteAvailable: true,
+  availability: "Evenings & weekends",
+  yearsInBusiness: 7, completedJobs: 3120, responseTime: "~3 hrs",
+  memberSince: "2021",
+  services: [
+    { name: "Math tutoring (K-12)", blurb: "Concept-first sessions with progress reports.", from: 45 },
+    { name: "SAT / ACT prep", blurb: "12-week programs with practice-test tracking.", from: 65 },
+    { name: "College essays", blurb: "Structured coaching, never ghostwriting.", from: 90 },
+  ],
+  portfolio: [
+    { src: U("photo-1434030216411-0b793f4b4173"), caption: "SAT prep cohort" },
+    { src: U("photo-1509062522246-3755977927d7"), caption: "1:1 math session" },
+  ],
+  about: "A collective of 30 vetted educators (demo narrative). Written progress note after every session.",
+  email: "learn@brightpath.example", phone: "(312) 555-0173",
+  scoreHistory: [
+    { month: "May", score: 90 }, { month: "Jun", score: 91 },
+    { month: "Jul", score: 89 }, { month: "Aug", score: 91 },
+    { month: "Sep", score: 92 }, { month: "Oct", score: 92 },
+  ],
+  reviews: [
+    r("bt-1", "brightpath-tutoring", "Hannah F.", "Chicago, IL", 5,
+      { satisfaction: 97, quality: 95, reliability: 96, value: 90, resolution: 93 },
+      "2026-09-10", "SAT +210 points", "My daughter went from 1180 to 1390 in three months. The tutor found exactly which question types cost points.", true, "SAT prep", 33),
+    r("bt-2", "brightpath-tutoring", "Marcus T.", "Evanston, IL", 5,
+      { satisfaction: 94, quality: 93, reliability: 95, value: 89, resolution: 90 },
+      "2026-08-05", "Finally gets algebra", "Progress notes after every session. My son actually looks forward to Tuesdays now.", true, "Math tutoring", 19),
+    r("bt-3", "brightpath-tutoring", "Lena V.", "Online", 5,
+      { satisfaction: 93, quality: 94, reliability: 92, value: 91, resolution: 88 },
+      "2026-06-21", "Great online format", "Interactive whiteboard sessions with recordings after each lesson.", true, "Math tutoring", 15),
+    r("bt-4", "brightpath-tutoring", "Owen J.", "Chicago, IL", 4,
+      { satisfaction: 85, quality: 87, reliability: 84, value: 82, resolution: 85 },
+      "2026-04-02", "Good, tutor changed once", "First tutor moved cities; reassignment was smooth and the new tutor was arguably better.", true, "ACT prep", 8),
+    r("bt-5", "brightpath-tutoring", "Grace N.", "Online", 5,
+      { satisfaction: 95, quality: 96, reliability: 94, value: 92, resolution: 90 },
+      "2025-12-15", "Essay coaching that works", "Helped my son find his own voice instead of writing it for him.", false, "College essays", 11),
+  ],
+};

@@ -1,0 +1,34 @@
+{
+  "name": "trustora",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TRUSTORA — Trust earned. Rankings explained.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --no-cache || echo \"lint skipped (no eslint config)\"",
+    "test:trust": "tsx scripts/test-trust-engine.ts"
+  },
+  "engines": {
+    "node": ">=20 <21",
+    "npm": ">=10"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.453.0",
+    "next": "14.2.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

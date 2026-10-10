@@ -1,0 +1,52 @@
+import type { Provider } from "./types";
+import { U, r } from "./data-helpers";
+
+export const P_APEX: Provider = {
+  id: "apex-auto-care",
+  name: "Apex Auto Care",
+  category: "automotive",
+  location: "Phoenix, AZ",
+  areas: ["Phoenix", "Mesa", "Tempe", "Scottsdale"],
+  image: U("photo-1625047509168-a7026f36de04"),
+  initials: "AA",
+  verification: "pending",
+  licenseNote: "ASE documentation under review (synthetic record)",
+  priceMin: 49, priceMax: 1500, quoteAvailable: true,
+  availability: "Same-week slots",
+  yearsInBusiness: 11, completedJobs: 4100, responseTime: "~2 hrs",
+  memberSince: "2020",
+  services: [
+    { name: "Full synthetic oil service", blurb: "45-min service, 30-point inspection.", from: 49 },
+    { name: "Brake service", blurb: "Pads, rotors, fluid with photo docs.", from: 180 },
+    { name: "AC repair", blurb: "Desert-tested cooling diagnostics.", from: 120 },
+  ],
+  portfolio: [
+    { src: U("photo-1487754180451-c456f719a1fc"), caption: "Brake overhaul with photo report" },
+    { src: U("photo-1486262715619-67b85e0b08d3"), caption: "Diagnostics bay" },
+  ],
+  about: "Independent shop that photographs everything before quoting (demo narrative). Verification paperwork under review.",
+  email: "service@apexauto.example", phone: "(602) 555-0191",
+  scoreHistory: [
+    { month: "May", score: 78 }, { month: "Jun", score: 80 },
+    { month: "Jul", score: 81 }, { month: "Aug", score: 79 },
+    { month: "Sep", score: 82 }, { month: "Oct", score: 83 },
+  ],
+  reviews: [
+    r("aa-1", "apex-auto-care", "Rob S.", "Phoenix, AZ", 4,
+      { satisfaction: 84, quality: 85, reliability: 82, value: 88, resolution: 80 },
+      "2026-08-17", "Honest quote", "Sent photos of worn pads vs. spec before asking me to approve. Came in under estimate.", true, "Brake service", 13),
+    r("aa-2", "apex-auto-care", "Kim D.", "Mesa, AZ", 5,
+      { satisfaction: 92, quality: 90, reliability: 91, value: 93, resolution: 87 },
+      "2026-06-29", "AC ice-cold again", "115-degree week and they got us in next day. Fair price, cold air.", true, "AC repair", 16),
+    r("aa-3", "apex-auto-care", "Paul N.", "Tempe, AZ", 3,
+      { satisfaction: 68, quality: 72, reliability: 65, value: 75, resolution: 62 },
+      "2026-04-11", "Good work, comms lag", "Repair fine but updates took chasing. Front desk seemed overwhelmed.", true, "Brake service", 4,
+      { date: "2026-04-13", text: "Fair point Paul — we have added a second service advisor since." }),
+    r("aa-4", "apex-auto-care", "Sofia L.", "Scottsdale, AZ", 4,
+      { satisfaction: 82, quality: 84, reliability: 80, value: 86, resolution: 78 },
+      "2026-01-22", "Solid neighborhood shop", "Quick oil service with a real inspection report.", false, "Oil service", 6),
+    r("aa-5", "apex-auto-care", "Mike B.", "Phoenix, AZ", 3,
+      { satisfaction: 70, quality: 74, reliability: 68, value: 78, resolution: 60 },
+      "2025-09-30", "Mixed experience", "First visit great, second they forgot the tire rotation. Fixed it free.", false, "Oil service", 3),
+  ],
+};
