@@ -12,12 +12,12 @@ export function ScoreRing({
   const pct = score == null ? 0 : score / 100;
   const color =
     score == null
-      ? "#475569"
+      ? "#94a3b8"
       : score >= 88
-        ? "#34d399"
+        ? "#22c55e"
         : score >= 78
-          ? "#7aa7ff"
-          : "#fbbf24";
+          ? "#16a34a"
+          : "#10b981";
   return (
     <div
       className="relative inline-flex items-center justify-center"

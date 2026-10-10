@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const COLS: { title: string; links: { href: string; label: string }[] }[] = [
@@ -41,15 +42,22 @@ const COLS: { title: string; links: { href: string; label: string }[] }[] = [
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-ink-950/60">
+    <footer className="mt-20 border-t border-green-200 bg-white/80">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_2fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-500 text-sm font-extrabold text-white">T</span>
-              <span className="text-[17px] font-extrabold tracking-tight text-white">TRUSTORA</span>
+              <div className="relative h-8 w-8">
+                <Image
+                  src="/logo.png"
+                  alt="TRUSTORA Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-[17px] font-extrabold tracking-tight text-slate-900">TRUSTORA</span>
             </div>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
               Trust earned. Rankings explained. Transparent, performance-based
               rankings for service providers — every score traceable to evidence.
             </p>
@@ -77,7 +85,7 @@ export function Footer() {
             ))}
           </nav>
         </div>
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-green-200 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
           <span>© 2026 TRUSTORA. Demo build — all providers, reviews and scores are synthetic.</span>
           <span>Sponsored listings are always labelled and never boost organic rank.</span>
         </div>

@@ -16,7 +16,7 @@ export function HeroCategories() {
           <h2 id="cats" className="h-display text-2xl">Browse categories</h2>
           <p className="mt-1 text-sm text-slate-400">Eight specialties, one transparent ranking method.</p>
         </div>
-        <Link href="/categories" className="hidden items-center gap-1 text-sm font-medium text-accent-400 hover:text-white sm:inline-flex">
+        <Link href="/categories" className="hidden items-center gap-1 text-sm font-medium text-green-600 hover:text-green-700 sm:inline-flex">
           All categories <ArrowRight size={15} />
         </Link>
       </div>
@@ -25,12 +25,12 @@ export function HeroCategories() {
           const n = PROVIDERS.filter((p) => p.category === c.slug).length;
           return (
             <Link key={c.slug} href={`/categories/${c.slug}`}
-              className="glass-soft group p-4 transition hover:border-accent-400/30 hover:bg-white/10 sm:p-5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-accent-500/10 text-accent-400 transition group-hover:bg-accent-500/20">
+              className="glass-soft group p-4 transition hover:border-green-400/30 hover:bg-green-50 sm:p-5">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-green-200 bg-green-100 text-green-600 transition group-hover:bg-green-200">
                 <CategoryIcon icon={c.icon} />
               </span>
-              <span className="mt-3 block text-sm font-semibold text-white">{c.label}</span>
-              <span className="mt-0.5 block text-xs text-slate-400">
+              <span className="mt-3 block text-sm font-semibold text-slate-900">{c.label}</span>
+              <span className="mt-0.5 block text-xs text-slate-500">
                 {n > 0 ? `${n} demo provider${n === 1 ? "" : "s"}` : "More providers soon"}
               </span>
             </Link>
@@ -51,7 +51,7 @@ export function HomeSections({ ranked }: { ranked: RankedProvider[] }) {
             <h2 id="top" className="h-display text-2xl">Top-ranked providers</h2>
             <p className="mt-1 text-sm text-slate-400">Ranked live by the trust engine.</p>
           </div>
-          <Link href="/rankings" className="hidden items-center gap-1 text-sm font-medium text-accent-400 hover:text-white sm:inline-flex">
+          <Link href="/rankings" className="hidden items-center gap-1 text-sm font-medium text-green-600 hover:text-green-700 sm:inline-flex">
             Full rankings <ArrowRight size={15} />
           </Link>
         </div>
@@ -93,18 +93,18 @@ function MethodologyStrip() {
   ];
   return (
     <section className="mx-auto max-w-7xl px-4 pt-14 sm:px-6" aria-labelledby="method">
-      <div className="glass p-8 sm:p-10">
-        <p className="text-xs font-semibold uppercase tracking-widest text-accent-400">Ranking methodology</p>
+      <div className="glass-card p-8 sm:p-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-green-600">Ranking methodology</p>
         <h2 id="method" className="h-display mt-2 text-2xl">How every score is calculated</h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
           Five evidence-backed dimensions on a 0–100 scale. Small samples are
           blended with a neutral prior instead of shown as definitive.
         </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((m) => (
-            <div key={m.t} className="rounded-xl border border-white/10 bg-ink-950/60 p-4">
-              <p className="text-2xl font-extrabold text-white">{m.w}</p>
-              <p className="mt-1 text-[13px] font-semibold text-slate-200">{m.t}</p>
+            <div key={m.t} className="rounded-xl border border-green-200 bg-white/70 p-4">
+              <p className="text-2xl font-extrabold text-slate-900">{m.w}</p>
+              <p className="mt-1 text-[13px] font-semibold text-slate-700">{m.t}</p>
               <p className="mt-1 text-xs leading-relaxed text-slate-500">{m.d}</p>
             </div>
           ))}
@@ -129,15 +129,15 @@ function TrustGrid() {
   return (
     <section className="mx-auto max-w-7xl px-4 pt-14 sm:px-6" aria-labelledby="trust">
       <h2 id="trust" className="h-display text-center text-2xl">Why TRUSTORA is different</h2>
-      <p className="mx-auto mt-2 max-w-xl text-center text-sm text-slate-400">
+      <p className="mx-auto mt-2 max-w-xl text-center text-sm text-slate-600">
         Five guarantees baked into the platform — not marketing copy.
       </p>
       <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {cards.map((c) => (
           <div key={c.t} className="glass-soft p-5">
-            <ShieldCheck size={20} className="text-accent-400" strokeWidth={1.8} />
-            <h3 className="mt-3 text-sm font-bold text-white">{c.t}</h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-slate-400">{c.d}</p>
+            <ShieldCheck size={20} className="text-green-600" strokeWidth={1.8} />
+            <h3 className="mt-3 text-sm font-bold text-slate-900">{c.t}</h3>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600">{c.d}</p>
           </div>
         ))}
       </div>

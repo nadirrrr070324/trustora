@@ -36,7 +36,7 @@ export default function SignInPage() {
     <div className="mx-auto max-w-md px-4 pt-12 sm:px-6">
       <div className="glass p-7">
         <h1 className="h-display text-2xl">Welcome back</h1>
-        <p className="mt-1 text-sm text-slate-400">Sign in to save providers, compare and review.</p>
+        <p className="mt-1 text-sm text-slate-600">Sign in to save providers, compare and review.</p>
         <form onSubmit={go} className="mt-5 space-y-3">
           <div>
             <label className="label" htmlFor="si-email">Email</label>
@@ -46,10 +46,10 @@ export default function SignInPage() {
             <label className="label" htmlFor="si-pass">Password</label>
             <input id="si-pass" type="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" placeholder="••••••••" />
           </div>
-          {err && <p className="text-[13px] text-red-300" role="alert">{err}</p>}
+          {err && <p className="text-[13px] text-red-600" role="alert">{err}</p>}
           <button type="submit" className="btn-primary w-full">Sign In</button>
         </form>
-        <div className="mt-5 border-t border-white/10 pt-4">
+        <div className="mt-5 border-t border-green-200 pt-4">
           <p className="text-xs text-slate-500">Demo build with local auth — pick a role to explore:</p>
           <div className="mt-2 grid grid-cols-3 gap-2">
             {QUICK.map((q) => (
@@ -63,8 +63,8 @@ export default function SignInPage() {
             ))}
           </div>
         </div>
-        <p className="mt-4 text-center text-[13px] text-slate-400">
-          New here? <Link href="/join" className="text-accent-400 underline underline-offset-2">Join as a provider</Link>
+        <p className="mt-4 text-center text-[13px] text-slate-600">
+          New here? <Link href="/join" className="text-green-600 underline underline-offset-2">Join as a provider</Link>
         </p>
       </div>
     </div>

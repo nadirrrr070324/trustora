@@ -23,7 +23,7 @@ export default function JoinPage() {
     <div className="mx-auto max-w-lg px-4 pt-12 sm:px-6">
       <div className="glass p-7">
         <h1 className="h-display text-2xl">Join as a Provider</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <p className="mt-1 text-sm text-slate-600">
           Claim a demo profile, manage enquiries and watch your trust score respond to real evidence.
         </p>
         <form onSubmit={go} className="mt-5 space-y-3">
@@ -54,11 +54,11 @@ export default function JoinPage() {
               <option value="professional-services">Professional Services</option>
             </select>
           </div>
-          <label className="flex cursor-pointer items-start gap-2.5 text-[13px] text-slate-300">
-            <input type="checkbox" checked={d.agree} onChange={(e) => setD({ ...d, agree: e.target.checked })} className="mt-0.5 h-4 w-4 accent-[#4f8cff]" />
+          <label className="flex cursor-pointer items-start gap-2.5 text-[13px] text-slate-600">
+            <input type="checkbox" checked={d.agree} onChange={(e) => setD({ ...d, agree: e.target.checked })} className="mt-0.5 h-4 w-4 accent-green-500" />
             I agree to the Provider Guidelines: no fake reviews, no score manipulation, honest verification documents.
           </label>
-          {err && <p className="text-[13px] text-red-300" role="alert">{err}</p>}
+          {err && <p className="text-[13px] text-red-600" role="alert">{err}</p>}
           <button type="submit" className="btn-primary w-full">Create provider account</button>
           <p className="text-center text-xs text-slate-500">Demo build — accounts live in your browser only.</p>
         </form>
