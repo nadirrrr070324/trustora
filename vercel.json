@@ -1,5 +1,22 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "regions": ["iad1"]
+  "regions": [
+    "iad1"
+  ],
+  "services": {
+    "trustora": {
+      "root": ".",
+      "framework": "nextjs",
+      "buildCommand": "npm install && npm run build"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "type": "service",
+        "service": "trustora"
+      }
+    }
+  ]
 }
-
