@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --no-cache || echo \"lint skipped (no eslint config)\"",
+    "lint": "node scripts/lint-guard.js",
     "test:trust": "tsx scripts/test-trust-engine.ts"
   },
   "engines": {
